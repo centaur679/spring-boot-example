@@ -1,6 +1,0 @@
-dependencies {
-    api project(":spring-commons")
-    api "org.springframework.boot:spring-boot-starter-data-redis-reactive"
-    api "com.fasterxml.jackson.core:jackson-databind"
-    api "org.apache.commons:commons-pool2"
-}

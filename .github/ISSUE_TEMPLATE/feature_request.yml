@@ -1,0 +1,28 @@
+name: 功能改进
+description: 功能改进
+title: "[功能改进]: 描述"
+labels: ["enhancement"]
+assignees: 'livk-cloud'
+body:
+  - type: dropdown
+    id: module
+    attributes:
+      label: Module
+      description: 在提交功能之前, 请确认模块
+      options:
+        - spring-auto-service
+        - spring-boot-extension-autoconfigure
+        - spring-extension-commons
+        - spring-extension-context
+  - type: markdown
+    attributes:
+      value: |
+        请说明你希望添加的功能
+  - type: textarea
+    id: feature-request
+    attributes:
+      label: 功能改进
+      description: 请详细描述需要改进或者添加的功能。
+      placeholder: "功能改进"
+    validations:
+      required: true

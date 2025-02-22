@@ -1,3 +1,0 @@
-spring:
-  zookeeper:
-    servers: livk.com:2181

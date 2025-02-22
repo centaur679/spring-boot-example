@@ -1,0 +1,56 @@
+[[aop]]
+==== aop
+
+===== AnnotationAbstractPointcutAdvisor
+
+使用注解处理AOP的通用切点及表达式
+
+使用示例
+
+[source,java,indent=0]
+----
+public class LockInterceptor extends AnnotationAbstractPointcutAdvisor<OnLock>{
+    @Override
+    protected Object invoke(MethodInvocation invocation, OnLock onLock){
+        //AOP处理等同于org.aspectj.lang.annotation.Around
+    }
+
+    @Override
+    public Pointcut getPointcut(){
+        //实现切入点
+    }
+}
+----
+
+将注解作为泛型，自动获取到注解信息
+
+===== AnnotationAbstractPointcutTypeAdvisor
+
+定制化拓展
+
+使用示例
+
+[source,java,indent=0]
+----
+public class LockInterceptor extends AnnotationAbstractPointcutTypeAdvisor<OnLock>{
+    @Override
+    protected Object invoke(MethodInvocation invocation, OnLock onLock){
+        //
+    }
+
+    @Override
+    protected AnnotationPointcutType pointcutType() {
+        //默认实现
+        return AnnotationAutoPointcut.auto();
+    }
+}
+----
+
+===== AnnotationPointcutType
+
+提供四种可选方案
+
+. TYPE基于类级别的拦截等价于(@Around(@within(Annotation)))
+. METHOD基于方法级别的拦截等价于(@Around(@annotation(Annotation)))
+. TYPE_OR_METHOD基于类或方法级别的拦截等价于(@Around(@annotation(Annotation)||@within(Annotation)))
+. AUTO根据Annotation Target推断(如果仅有TYPE、则为TYPE级别。如果仅有METHOD、则为METHOD级别。如果同时都有则为TYPE_OR_METHOD级别。以上情况都无法出现则抛出异常)

@@ -1,5 +1,0 @@
-dependencies {
-    implementation project(":spring-excel:excel-spring-boot-starter")
-    implementation "org.springframework.boot:spring-boot-starter-webflux"
-    implementation "jakarta.servlet:jakarta.servlet-api"
-}
