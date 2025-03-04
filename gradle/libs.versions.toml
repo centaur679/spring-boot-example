@@ -1,70 +1,101 @@
 [versions]
-springBoot = "3.0.0"
-pagehelper = "5.3.2"
-pagehelperBoot = "1.4.5"
-oauth2Authorization = "1.0.0"
-mybatis = "3.5.11"
-springMybatis = "2.2.2"
-guava = "31.1-jre"
-easyExcel = "3.1.3"
-javaWebSocket = "1.5.3"
-jsqlparser = "4.5"
-redisson = "3.18.0"
-zookeeper = "3.8.0"
-jjwtApi = "0.11.5"
-clickhouseJdbc = "0.3.2-patch11"
-pulsarClient = "2.10.2"
-googleFindbugs = "3.0.1"
-mapstruct = "1.5.3.Final"
-mapstructLombok = "0.2.0"
-curator = "5.4.0"
-mapstructSpring = "0.1.2"
-ip2region = "2.6.6"
-asciidoctorJvm = "3.3.2"
-browscapJava = "1.3.13"
-autoService = "1.0.1"
-yauaa = "7.8.0"
-springdoc = "2.0.0"
-googleJavase = "3.5.1"
-springBootAdmin = "3.0.0-M5"
+spring-boot = "3.4.3"
+kotlin = "2.1.10"
+pagehelper-starter = "2.1.0"
+mybatis = "3.5.19"
+mybatis-spring = "3.0.4"
+mybatis-boot = "3.0.4"
+guava = "33.4.0-jre"
+fastexcel = "1.1.0"
+redisson = "3.45.0"
+clickhouse = "0.7.2"
+mapstruct = "1.6.3"
+mapstruct-lombok = "0.2.0"
+curator = "5.7.1"
+asciidoctor-jvm = "4.0.4"
+browscap-java = "1.4.5"
+auto-service = "1.1.1"
+yauaa = "7.30.0"
+springdoc = "2.8.5"
+google-javase = "3.5.3"
+spring-admin = "3.4.4"
+nimbusds-jwt = "10.0.2"
+jsqlparser = "5.1"
+lettucemod = "4.2.0"
+minio = "8.5.17"
+aviator = "5.4.3"
+protobuf-java = "4.29.3"
+grpc-java = "1.70.0"
+google-protobuf-plugins = "0.9.4"
+google-osdetector-plugins = "1.7.3"
+jexl3 = "3.4.0"
+mvel2 = "2.5.2.Final"
+disruptor = "4.0.0"
+spring-asciidoctor = "0.0.7"
+spring-javaformat = "0.0.43"
+compile-testing = "0.21.0"
+okhttp = "4.12.0"
 
 [libraries]
-spring-boot-admin-dependencies = { group = "de.codecentric", name = "spring-boot-admin-dependencies", version.ref = "springBootAdmin" }
-pagehelper = { group = "com.github.pagehelper", name = "pagehelper", version.ref = "pagehelper" }
-pagehelper-starter = { group = "com.github.pagehelper", name = "pagehelper-spring-boot-starter", version.ref = "pagehelperBoot" }
-oauth2-authorization-server = { group = "org.springframework.security", name = "spring-security-oauth2-authorization-server", version.ref = "oauth2Authorization" }
-guava = { group = "com.google.guava", name = "guava", version.ref = "guava" }
-easyexcel = { group = "com.alibaba", name = "easyexcel", version.ref = "easyExcel" }
-mybatis-starter = { group = "org.mybatis.spring.boot", name = "mybatis-spring-boot-starter", version.ref = "springMybatis" }
+spring-boot-admin-dependencies = { group = "de.codecentric", name = "spring-boot-admin-dependencies", version.ref = "spring-admin" }
+okhttp-bom = { group = "com.squareup.okhttp3", name = "okhttp-bom", version.ref = "okhttp" }
+
+#springdoc-openapi-all
+openapi-webflux-ui = { group = "org.springdoc", name = "springdoc-openapi-starter-webflux-ui", version.ref = "springdoc" }
+openapi-webmvc-ui = { group = "org.springdoc", name = "springdoc-openapi-starter-webmvc-ui", version.ref = "springdoc" }
+
+pagehelper-starter = { group = "com.github.pagehelper", name = "pagehelper-spring-boot-starter", version.ref = "pagehelper-starter" }
+
+#mybatis-all
+mybatis-starter = { group = "org.mybatis.spring.boot", name = "mybatis-spring-boot-starter", version.ref = "mybatis-boot" }
+mybatis-autoconfigure = { group = "org.mybatis.spring.boot", name = "mybatis-spring-boot-autoconfigure", version.ref = "mybatis-boot" }
+mybatis-spring = { group = "org.mybatis", name = "mybatis-spring", version.ref = "mybatis-spring" }
 mybatis = { group = "org.mybatis", name = "mybatis", version.ref = "mybatis" }
-java-webSocket = { group = "org.java-websocket", name = "Java-WebSocket", version.ref = "javaWebSocket" }
-jsqlparser = { group = "com.github.jsqlparser", name = "jsqlparser", version.ref = "jsqlparser" }
+
+#redisson-all
 redisson-starter = { group = "org.redisson", name = "redisson-spring-boot-starter", version.ref = "redisson" }
 redisson = { group = "org.redisson", name = "redisson", version.ref = "redisson" }
-zookeeper = { group = "org.apache.zookeeper", name = "zookeeper", version.ref = "zookeeper" }
-jjwt-api = { group = "io.jsonwebtoken", name = "jjwt-api", version.ref = "jjwtApi" }
-jjwt-impl = { group = "io.jsonwebtoken", name = "jjwt-impl", version.ref = "jjwtApi" }
-jjwt-jackson = { group = "io.jsonwebtoken", name = "jjwt-jackson", version.ref = "jjwtApi" }
-clickhouse-jdbc = { group = "com.clickhouse", name = "clickhouse-jdbc", version.ref = "clickhouseJdbc" }
-pulsar-client = { group = "org.apache.pulsar", name = "pulsar-client", version.ref = "pulsarClient" }
-findbugs-annotations = { group = "com.google.code.findbugs", name = "annotations", version.ref = "googleFindbugs" }
+redisson-spring-data = { group = "org.redisson", name = "redisson-spring-data-34", version.ref = "redisson" }
+
+#clickhouse-all
+clickhouse-jdbc = { group = "com.clickhouse", name = "clickhouse-jdbc", version.ref = "clickhouse" }
+clickhouse-r2dbc = { group = "com.clickhouse", name = "clickhouse-r2dbc", version.ref = "clickhouse" }
+clickhouse-client = { group = "com.clickhouse", name = "clickhouse-client", version.ref = "clickhouse" }
+
+#mapstruct-all
 mapstruct = { group = "org.mapstruct", name = "mapstruct", version.ref = "mapstruct" }
 mapstruct-processor = { group = "org.mapstruct", name = "mapstruct-processor", version.ref = "mapstruct" }
-lombok-mapstruct = { group = "org.projectlombok", name = "lombok-mapstruct-binding", version.ref = "mapstructLombok" }
+lombok-mapstruct = { group = "org.projectlombok", name = "lombok-mapstruct-binding", version.ref = "mapstruct-lombok" }
+
+guava = { group = "com.google.guava", name = "guava", version.ref = "guava" }
+fastexcel = { group = "cn.idev.excel", name = "fastexcel", version.ref = "fastexcel" }
 curator-recipes = { group = "org.apache.curator", name = "curator-recipes", version.ref = "curator" }
-mapstruct-spring-extensions = { group = "org.mapstruct.extensions.spring", name = "mapstruct-spring-extensions", version.ref = "mapstructSpring" }
-mapstruct-spring-annotations = { group = "org.mapstruct.extensions.spring", name = "mapstruct-spring-annotations", version.ref = "mapstructSpring" }
-ip2region = { group = "org.lionsoul", name = "ip2region", version.ref = "ip2region" }
-browscap-java = { group = "com.blueconic", name = "browscap-java", version.ref = "browscapJava" }
-auto-service = { group = "com.google.auto.service", name = "auto-service", version.ref = "autoService" }
+browscap-java = { group = "com.blueconic", name = "browscap-java", version.ref = "browscap-java" }
+auto-service = { group = "com.google.auto.service", name = "auto-service", version.ref = "auto-service" }
 yauaa = { group = "nl.basjes.parse.useragent", name = "yauaa", version.ref = "yauaa" }
-springdoc-openapi-dependencies = { group = "org.springdoc", name = "springdoc-openapi", version.ref = "springdoc" }
-google-javase = { group = "com.google.zxing", name = "javase", version.ref = "googleJavase" }
+google-javase = { group = "com.google.zxing", name = "javase", version.ref = "google-javase" }
+nimbus-jose-jwt = { group = "com.nimbusds", name = "nimbus-jose-jwt", version.ref = "nimbusds-jwt" }
+jsqlparser = { group = "com.github.jsqlparser", name = "jsqlparser", version.ref = "jsqlparser" }
+lettucemod = { group = "com.redis", name = "lettucemod", version.ref = "lettucemod" }
+minio = { group = "io.minio", name = "minio", version.ref = "minio" }
+aviator = { group = "com.googlecode.aviator", name = "aviator", version.ref = "aviator" }
+protobuf-java = { group = "com.google.protobuf", name = "protobuf-java", version.ref = "protobuf-java" }
+protobuf-java-protoc = { group = "com.google.protobuf", name = "protoc", version.ref = "protobuf-java" }
+grpc-java = { group = "io.grpc", name = "protoc-gen-grpc-java", version.ref = "grpc-java" }
+commons-jexl3 = { group = "org.apache.commons", name = "commons-jexl3", version.ref = "jexl3" }
+mvel2 = { group = "org.mvel", name = "mvel2", version.ref = "mvel2" }
+disruptor = { group = "com.lmax", name = "disruptor", version.ref = "disruptor" }
+spring-asciidoctor = { group = "io.spring.asciidoctor.backends", name = "spring-asciidoctor-backends", version.ref = "spring-asciidoctor" }
+compile-testing = { group = "com.google.testing.compile", name = "compile-testing", version.ref = "compile-testing" }
 
 [bundles]
-jjwt = ["jjwt-api", "jjwt-impl", "jjwt-jackson"]
-
+mybatis-all = ["mybatis", "mybatis-spring", "mybatis-autoconfigure", "mybatis-starter"]
+redisson-all = ["redisson", "redisson-starter", "redisson-spring-data"]
+mapstruct-all = ["mapstruct", "mapstruct-processor", "lombok-mapstruct"]
 
 [plugins]
-spring-boot = { id = "org.springframework.boot", version.ref = "springBoot" }
-asciidoctor-jvm = { id = "org.asciidoctor.jvm.convert", version.ref = "asciidoctorJvm" }
+spring-boot = { id = "org.springframework.boot", version.ref = "spring-boot" }
+kotlin-jvm = { id = "org.jetbrains.kotlin.jvm", version.ref = "kotlin" }
+asciidoctor-jvm = { id = "org.asciidoctor.jvm.convert", version.ref = "asciidoctor-jvm" }
+google-protobuf = { id = "com.google.protobuf", version.ref = "google-protobuf-plugins" }
+spring-javaformat = { id = "io.spring.javaformat", version.ref = "spring-javaformat" }

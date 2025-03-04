@@ -1,91 +1,113 @@
-= Spring Boot Example
+image:https://github.com/livk-cloud/spring-boot-example/actions/workflows/ci.yml/badge.svg?branch=main["Build Status",
+link="https://github.com/livk-cloud/spring-boot-example/actions/workflows/ci.yml"]image:https://dl.circleci.com/status-badge/img/gh/livk-cloud/spring-boot-extension/tree/main.svg?style=svg["CircleCI", link="https://dl.circleci.com/status-badge/redirect/gh/livk-cloud/spring-boot-extension/tree/main"]
+image:https://app.codacy.com/project/badge/Grade/65ac2ad9bc494943b8e4571c9adeefc5[link="https://app.codacy.com/gh/livk-cloud/spring-boot-extension/dashboard?utm_source=gh&utm_medium=referral&utm_content=&utm_campaign=Badge_grade"]
+image:https://www.codefactor.io/repository/github/livk-cloud/spring-boot-extension/badge["CodeFactor", link="https://www.codefactor.io/repository/github/livk-cloud/spring-boot-extension"]
 
-link:README-en.adoc[English]|link:README.adoc[简体中文] +
-https://github.com/livk-cloud/spring-boot-example[GitHub] | https://gitee.com/livk-cloud/spring-boot-example[Gitee] +
-https://github.com/livk-cloud/spring-cloud-example[正式版移步 `Spring Cloud` 项目] +
+image:https://app.deepsource.com/gh/livk-cloud/spring-boot-extension.svg/?label=active+issues&show_trend=true&token=nc2HVdT6bxfGl90GCpRLzl6n["DeepSource", link="https://app.deepsource.com/gh/livk-cloud/spring-boot-extension/"]
+image:https://app.deepsource.com/gh/livk-cloud/spring-boot-extension.svg/?label=resolved+issues&show_trend=true&token=nc2HVdT6bxfGl90GCpRLzl6n["DeepSource", link="https://app.deepsource.com/gh/livk-cloud/spring-boot-extension/"]
 
-这是一个关于springboot项目的各种示例 +
+image:https://img.shields.io/badge/QQ群:857146133-brightgreen.svg[link="https://qm.qq.com/cgi-bin/qm/qr?k=7mqPb8JcXoDpFkk4Vx7CcFFrIXrIxbVE&jump_from=webapi&authKey=twOCFhCWeYIiP4DNWM91BjGcPXuxpWikyk2Dh+fFctht5xcvT9N8PUsVMUcKQvJf"]
+image:https://img.shields.io/maven-central/v/io.github.livk-cloud/spring-extension-dependencies[link="https://mvnrepository.com/artifact/io.github.livk-cloud/spring-extension-dependencies"]
+
+image:https://niixer.com/wp-content/uploads/2020/11/spring-boot.png[width=500,link="https://spring.io/projects/spring-boot"]
+
+这是一个springboot与spring功能拓展 +
+整合多个第三方框架的starter集合 +
 使用第三方包基本覆盖最新版本 +
-关于Gradle的各种使用方式以及示例 +
-同时包含了各种自定义Spring Boot Starter +
-里面的代码或多或少应该可以帮助到你 +
-如果觉得不错，可以star一下 +
-Mock与WebclientTest测试覆盖大部分功能 +
-JDK:17(最新LTS) +
-SpringBoot: 3.0.0(最新正式版) +
-Gradle: 7.5.1(当前最新版) +
+MockMvc与WebclientTest测试覆盖大部分功能 +
+测试用例执行使用 https://github.com/testcontainers/testcontainers-java[testcontainers-java] +
+请使用JDK21+ ，测试用例运行需使用docker环境 +
+如有需要请提出issue +
+
+#项目结构#
+
+[source,text,indent=0]
+----
+|--spring-boot-example
+    |--buildSrc(Gradle自定义插件)
+    |--gradle/libs.versions.toml(gradle Catalog依赖管理)
+    |--spring-auto-service(SpringBoot自动装配文件生成器)
+    |--spring-boot-example(示例项目)
+    |--spring-boot-extension-autoconfigure(spring boot自动装配)
+    |--spring-boot-extension-starters(starter集合包)
+    |--spring-boot-extension-tests(测试用例集合)
+    |--spring-extension-bom(BOM)
+    |--spring-extension-commons(通用基础工具包)
+    |--spring-extension-context(拓展核心包)
+    |--spring-extension-dependencies(依赖版本管理)
+    |--spring-extension-testcontainers(testcontainers测试工具包)
+----
 
 link:gradle.properties[项目信息] +
 link:gradle/libs.versions.toml[版本控制] +
-link:example.adoc[示例详情] +
-link:upgrade-log.adoc[升级文档] +
+link:spring-boot-example/example.adoc[示例详情] +
 
-使用 https://github.com/gradle/gradle-profiler[Gradle-Profiler]分析器进行分析
+项目相关版本控制 +
 
-[source,shell,indent=0]
+--
+[source,xml,indent=0,subs="verbatim,quotes",role="primary"]
+.Maven
 ----
-gradle-profiler --gradle-user-home D:\gradle-7.5.1 --benchmark --cli --project-dir ./ clean
+<dependencyManagement>
+    <dependencies>
+        <dependency>
+            <groupId>io.github.livk-cloud</groupId>
+            <artifactId>spring-extension-dependencies</artifactId>
+            <version>${version}</version>
+            <scope>import</scope>
+            <type>pom</type>
+        </dependency>
+    </dependencies>
+</dependencyManagement>
 ----
 
-https://qm.qq.com/cgi-bin/qm/qr?k=7mqPb8JcXoDpFkk4Vx7CcFFrIXrIxbVE&jump_from=webapi&authKey=twOCFhCWeYIiP4DNWM91BjGcPXuxpWikyk2Dh+fFctht5xcvT9N8PUsVMUcKQvJf"[QQ群 857146133]
+[source,groovy,indent=0,subs="verbatim,quotes",role="secondary"]
+.Gradle-Groovy
+----
+implementation platform('io.github.livk-cloud:spring-extension-dependencies:$version')
+----
 
-#中间件#：MySql、Postgres、ClickHouse、Kafka、Pulsar、Rabbit、Redis、Zookeeper +
+[source,kotlin,indent=0,subs="verbatim,quotes",role="secondary"]
+.Groovy-Kotlin
+----
+implementation(platform("io.github.livk-cloud:spring-extension-dependencies:${version}"))
+----
+--
 
-#框架#：
-[%autowidth]
+最小BOM依赖
 
-|===
-|名称 |功能
+--
+[source,xml,indent=0,subs="verbatim,quotes",role="primary"]
+.Maven
+----
+<dependencyManagement>
+    <dependencies>
+        <dependency>
+            <groupId>io.github.livk-cloud</groupId>
+            <artifactId>spring-extension-bom</artifactId>
+            <version>${version}</version>
+            <scope>import</scope>
+            <type>pom</type>
+        </dependency>
+    </dependencies>
+</dependencyManagement>
+----
 
-|Spring-Boot-Admin
-|springboot监控服务
+[source,groovy,indent=0,subs="verbatim,quotes",role="secondary"]
+.Gradle-Groovy
+----
+implementation platform('io.github.livk-cloud:spring-extension-bom:$version')
+----
 
-|Spring-Authorization-Server
-|spring授权服务器
+[source,kotlin,indent=0,subs="verbatim,quotes",role="secondary"]
+.Groovy-Kotlin
+----
+implementation(platform("io.github.livk-cloud:spring-extension-bom:${version}"))
+----
+--
 
-|Spring-Batch
-|spring批次处理框架
+== 其他支持
 
-|Springdoc-Openapi
-|新版Swagger API文档
-
-|EasyExcel
-|便捷的Excel处理框架
-
-|GraphQL
-|查询语言规划
-
-|Spring-Hateoas
-|restful风格处理框架
-
-|Ip2region
-|ip地址查询框架
-
-|Mapstruct
-|优秀的实体转换工具
-
-|Mybatis
-|半自动ORM框架
-
-|Google Zxing Javase
-|谷歌二维码生成框架
-
-|Quartz
-|定时任务框架
-
-|R2dbc-postgresql
-|异步数据库协议
-
-|Spring-Restdocs
-|API文档生成框架
-
-|Spring-Retry
-|重试框架
-
-|Spring-Security
-|安全框架
-
-|Browscap-Java、Yauaa
-|HTTP用户信息解析框架
-|===
-
+link:https://www.jetbrains.com/?from=spring-boot-extension[JetBrains] - 感谢JetBrains对 spring-boot-extension项目的支持 +
+link:https://spring.io/[Spring] - Spring社区技术指导 +
+link:https://discuss.gradle.org/[Gradle Forums] - Gradle社区插件功能指导 +
